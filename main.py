@@ -30,6 +30,11 @@ else:
     cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}
 
 
+    def print_values(pairs):
+        for key, value in pairs.items():
+            print(f'{key} - {value} złotych.')
+
+
     def checking_and_changing_the_balance(user_choice, operation_num, amount):
         if user_choice == 2:
             if amount < cash_withdrawals[operation_num]:
@@ -46,6 +51,7 @@ else:
 
     choice1 = int(input(
         'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))  # obsłużyć przypadek z wprowadzeniem wartości poza przedziałem 0-6 (ma się wyświetlać komunikat, że wybrano nieprawidłowa wartość) oraz 0 (ma się wyświetlać komunikat kończymy na dziś)
+
     while choice1 != 0:
         if choice1 == 1:
             print(f'Stan dostępnych środków na twoim koncie wynosi\n{balance} złotych.')
@@ -54,33 +60,34 @@ else:
             choice1 = int(input(
                 'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
         elif choice1 == 2:
-
-            # Poniżej chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję
-            # słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
-            if balance < min(val for val in cash_withdrawals.values()):
+            if balance < min(val for val in
+                             cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
                 print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')
             else:
                 print('Dostępne możliwości wypłaty gotówki:')
-                for key, value in cash_withdrawals.items():
-                    print('{} - {} złotych.'.format(key, value))
+                print_values(cash_withdrawals)
                 choice2 = int(input('Którą kwotę wybierasz: 1, 2, 3, czy 4?: '))
 
             balance = (checking_and_changing_the_balance(choice1, choice2, balance))
-
             print_operations()
             choice1 = int(input(
                 'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
         elif choice1 == 3:
             print('Dostępne możliwości wpłaty gotówki:')
-            for key, value in cash_withdrawals.items():
-                print('{} - {} złotych.'.format(key, value))
+            print_values(cash_withdrawals)
 
             choice3 = int(input("Która kwotę wybierasz: 1, 2, 3, czy 4?: "))
             balance = (checking_and_changing_the_balance(choice1, choice3, balance))
+            print_operations()
+            choice1 = int(input(
+                'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
 
-#         elif choice1 == 4:
+
+
+
+    #         elif choice1 == 4:
     #             a = input("Podaj nowy nr PIN: ")
     #         elif choice1 == 5:
     #             print(
