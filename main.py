@@ -14,7 +14,7 @@ while a != '6666' and i < 3:
     a = input('Podaj nr PIN: ')
 
 else:
-    print('PIN jest poprawny')
+    print('PIN jest poprawny.')
     time.sleep(1.0)
 
 
