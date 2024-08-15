@@ -56,6 +56,7 @@ else:
             time.sleep(1.0)
             print_operations()
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
+
         elif choice1 == 2:
             if balance < min(val for val in cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
                 print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')
