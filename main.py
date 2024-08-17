@@ -7,7 +7,8 @@ i = 0
 while pin1 != '6666' and i < 3:
     i += 1
     if i == 3:
-        print(f'Wprowadzono {i} razy błędnie nr PIN. Karta została zablokowana.\nUdaj się do oddziału w celu odblokowania karty')
+        print(
+            f'Wprowadzono {i} razy błędnie nr PIN. Karta została zablokowana.\nUdaj się do oddziału w celu odblokowania karty')
         break
     print('Podałeś nieprawidłowy PIN. Spróbuj jeszcze raz!')
     pin1 = input('Podaj nr PIN: ')
@@ -48,7 +49,8 @@ else:
 
     print_operations()
 
-    choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))  # obsłużyć przypadek z wprowadzeniem wartości poza przedziałem 0-6 (ma się wyświetlać komunikat, że wybrano nieprawidłowa wartość) oraz 0 (ma się wyświetlać komunikat kończymy na dziś)
+    choice1 = int(input(
+        'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))  # obsłużyć przypadek z wprowadzeniem wartości poza przedziałem 0-6 (ma się wyświetlać komunikat, że wybrano nieprawidłowa wartość) oraz 0 (ma się wyświetlać komunikat kończymy na dziś)
 
     while choice1 != 0:
         if choice1 == 1:
@@ -58,7 +60,8 @@ else:
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
         elif choice1 == 2:
-            if balance < min(val for val in cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
+            if balance < min(val for val in
+                             cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
                 print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')
             else:
                 print('Dostępne możliwości wypłaty gotówki:')
@@ -85,26 +88,23 @@ else:
             else:
                 print('Twój nowy PIN jest taki sam jak stary i dlatego nie został zmieniony. Spróbuj ponownie.')
 
-        print_operations()
-        choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
+            print_operations()
+            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
 
-
-
-
-
-
-    #         elif choice1 == 5:
-    #             print(
-    #                 "Minimalna kwota pożyczki udzielonej w bankomacie wynosi 200 zł, a maksymalna 2000 zł.  Jeśli chcesz pożyczyć więcej, udaj się do oddziału lub skorzystaj z bankowości elektronicznej. ")
-    #             c = float(input("Podaj liczbę z przedziału od 200 zł do 2000 zł: "))
-    #             if 200 <= c <= 2000:
-    #                 b += round(c, 2)
-    #                 print("Dopisano do twojego konta", c, "złotych. Obecnie masz na koncie", b + c,
-    #                       "złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do odziału lub skorzystaj z bankowości elektronicznej.")  # obsłużyć prawidłowe wyświetlanie tego komunikatu
-    #             else:
-    #                 print(
-    #                     "Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł. ")
+        elif choice1 == 5:
+            print(
+                f'Minimalna kwota pożyczki udzielonej w bankomacie wynosi 200 zł, a maksymalna 2000 zł.\nJeśli chcesz pożyczyć więcej, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')
+            choice4 = int(input('Podaj liczbę z przedziału od 200 zł do 2000 zł: '))
+            if 200 <= choice4 <= 2000:
+                balance += round(choice4, 2)
+                print(
+                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {balance} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu
+            else:
+                print(
+                    f'Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł.')
+            print_operations()
+            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
     #         elif choice1 == 6:
     #             d = input("Podaj numer telefonu, który chcesz doładować: ")
     #             print("Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje:")
