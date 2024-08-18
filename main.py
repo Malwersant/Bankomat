@@ -17,6 +17,10 @@ else:
     print('PIN jest poprawny.')
     time.sleep(1.0)
 
+    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}
+    values = [10, 20, 50, 100]
+    phone_top_up = dict(enumerate(values, 1))
+
 
     def print_operations():
         operations = {1: 'sprawdzanie salda rachunku', 2: 'wypłata gotówki', 3: 'wpłata gótówki',
@@ -25,9 +29,6 @@ else:
         print('Dostępne operacje:')
         for key, value in operations.items():
             print('{}: {}'.format(key, value))
-
-
-    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}
 
 
     def print_values(pairs):
@@ -44,7 +45,20 @@ else:
                 amount -= cash_withdrawals[operation_num]
         elif user_choice == 3:
             amount += cash_withdrawals[operation_num]
+        elif user_choice == 6:
+            if amount < phone_top_up[operation_num]:
+                print(
+                    f'Nie masz wystarczających środków, żeby zrealizować tę operację.\nMasz na koncie {amount} złotych, a próbujesz doładować telefon za {phone_top_up[operation_num]} złotych.')
+            else:
+                amount -= phone_top_up[operation_num]
+                print(f'Twój telefon został doładowany na kwotę {phone_top_up[operation_num]} złotych.')
+
         return round(amount, 2)
+
+
+    def print_telephone_values(dictonary):
+        for x, y in dictonary.items():
+            print(f'{x}: {y}')
 
 
     print_operations()
@@ -60,9 +74,9 @@ else:
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
         elif choice1 == 2:
-            if balance < min(val for val in
-                             cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
-                print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')
+            if balance < min(
+                    cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda
+                print('Nie masz wystarczajacej ilości środków na koncie, żeby zrealizować tę operację.')
             else:
                 print('Dostępne możliwości wypłaty gotówki:')
                 print_values(cash_withdrawals)
@@ -105,23 +119,20 @@ else:
                     f'Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł.')
             print_operations()
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
-    #         elif choice1 == 6:
-    #             d = input("Podaj numer telefonu, który chcesz doładować: ")
-    #             print("Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje:")
-    #             print("1 - 10 złotych")
-    #             print("2 - 20 złotych")
-    #             print("3 - 50 złotych")
-    #             print("4 - 100 złotych")
-    #             choice4 = int(input("Która kwotę wybierasz: 1, 2, 3 czy 4? "))
-    #             if choice4 == 1:
-    #                 b -= 10
-    #             elif choice4 == 2:
-    #                 b -= 20
-    #             elif choice4 == 3:
-    #                 b -= 50
-    #             elif choice4 == 4:
-    #                 b -= 100
+
+        elif choice1 == 6:
+            input(f'Podaj numer telefonu, który chcesz doładować: ')  # tu tez  zrobić rise error
+            print('Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje: ')
+            print_telephone_values(phone_top_up)
+            choice4 = int(input('Którą kwotę wybierasz: 1, 2, 3 czy 4? '))
+            if balance < min(phone_top_up.values()):
+                print('Nie masz wystarczajacej ilości środków na koncie, żeby zrealizować tę operację.')
+                print_operations()
+                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))
+            else:
+                balance = checking_and_changing_the_balance(choice1, choice4, balance)
+                print_operations()
+                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))
+
     else:
         print('Życzymy miłego dnia i zapraszamy ponownie.')
-
-# # while choice1 in (0, 1, 2, 3, 4, 5, 6):
