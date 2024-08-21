@@ -51,9 +51,15 @@ else:
                 print(
                     f'Nie masz wystarczających środków, żeby zrealizować tę operację.\nMasz na koncie {amount} złotych, a próbujesz doładować telefon za {phone_top_up[operation_num]} złotych.')
             else:
-                try:
-                    if len(kwargs)
-                 # pojawia się komunikat, że mam 80 zł na koncie, a próbuję doładować telefon za więcej, ale po chwili prosi mnie o podanie numeru telefonu do poprawienia
+                if 'phone_number' in kwargs:
+                    phone_number = kwargs['phone_number']
+                if len(phone_number) != 9:
+                    raise ValueError(
+                        f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)} cyfrę.')
+                if not (phone_number.isdigit()):
+                    raise ValueError(f'Numer telefonu musi się składać z samych cyfr, a przekazano także inny znak.')
+
+                # pojawia się komunikat, że mam 80 zł na koncie, a próbuję doładować telefon za więcej, ale po chwili prosi mnie o podanie numeru telefonu do poprawienia
                 amount -= phone_top_up[operation_num]
                 print(f'Twój telefon został doładowany na kwotę {phone_top_up[operation_num]} złotych.')
 
@@ -138,8 +144,11 @@ else:
                 print('Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje: ')
                 print_telephone_values(phone_top_up)
                 choice5 = int(input('Którą kwotę wybierasz: 1, 2, 3 czy 4? '))
-                balance = checking_and_changing_the_balance(choice1, choice5, balance, phone_number = choice6)
-                input(f'Podaj numer telefonu, który chcesz doładować: ')  # tu tez  zrobić rise error
+                choice6 = input(f'Podaj numer telefonu, który chcesz doładować: ')  # tu tez  zrobić rise error
+                try:
+                    balance = checking_and_changing_the_balance(choice1, choice5, balance, phone_number=choice6)
+                except ValueError as e:
+                    print(e)
                 time.sleep(2.0)
                 print_operations()
                 choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))
