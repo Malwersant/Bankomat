@@ -10,7 +10,7 @@ while pin1 != '6666' and i < 3:
         print(
             f'Wprowadzono {i} razy błędnie nr PIN. Karta została zablokowana.\nUdaj się do oddziału w celu odblokowania karty')
         break
-    print('Podałeś nieprawidłowy PIN. Spróbuj jeszcze raz!')
+    print(f'Podałeś nieprawidłowy PIN. Pozostały jeszcze {3 - i} próby. Spróbuj jeszcze raz!')
     pin1 = input('Podaj nr PIN: ')
 
 else:
@@ -51,15 +51,15 @@ else:
                 print(
                     f'Nie masz wystarczających środków, żeby zrealizować tę operację.\nMasz na koncie {amount} złotych, a próbujesz doładować telefon za {phone_top_up[operation_num]} złotych.')
             else:
-                if 'phone_number' in kwargs:
-                    phone_number = kwargs['phone_number']
+                if 'phone_number' in kwargs:  # sumie, to ta linijka jest niepotrzebna, w tym przypadku, bo ja w wywołaniu podaję klucz słownika 'phone_number'
+                    phone_number = kwargs[
+                        'phone_number']  # ale generalnie zaporponował ja chatgpt, żeby sprawdzić na początku klucz phone_number jest w kwargs.
                 if len(phone_number) != 9:
                     raise ValueError(
                         f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)} cyfrę.')
                 if not (phone_number.isdigit()):
                     raise ValueError(f'Numer telefonu musi się składać z samych cyfr, a przekazano także inny znak.')
 
-                # pojawia się komunikat, że mam 80 zł na koncie, a próbuję doładować telefon za więcej, ale po chwili prosi mnie o podanie numeru telefonu do poprawienia
                 amount -= phone_top_up[operation_num]
                 print(f'Twój telefon został doładowany na kwotę {phone_top_up[operation_num]} złotych.')
 
@@ -111,12 +111,22 @@ else:
 
         elif choice1 == 4:
             pin2 = input('Podaj nowy nr PIN: ')
-            if pin2 != pin1:
+            try:
+                if not pin2.isdigit():
+                    raise ValueError(f'Numer PIN musi się składać z samych cyfr. Podano inny znak. Spróbuj ponownie.')
+                if len(pin2) != 4:
+                    raise ValueError(f'Numer PIN musi się składać z 4 znaków. Podano {len(pin2)}. Spróbuj ponownie.')
+                if pin2 == pin1:
+                    raise ValueError(
+                        'Podany przez ciebie PIN jest taki sam jak poprzedni i dlatego nie zostanie zmieniony. Spróbuj ponownie.')
+
+            except ValueError as e:
+                print(e)
+            else:
                 pin1 = pin2
                 print('Twój PIN został zmieniony.')
-            else:
-                print('Twój nowy PIN jest taki sam jak stary i dlatego nie został zmieniony. Spróbuj ponownie.')
 
+            time.sleep(2.0)
             print_operations()
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
 
