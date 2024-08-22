@@ -1,0 +1,67 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\r\n\r\nprint('Dzień dobry. Włóż kartę do bankomatu.')\r\na = input('Podaj nr PIN: ')\r\nbalance = 5000.11\r\ni = 0\r\nwhile a != '6666' and i < 3:\r\n    i += 1\r\n    if i == 3:\r\n        print(\r\n            f'Wprowadzono {i} razy błędnie nr PIN. Karta została zablokowana.\\nUdaj się do oddziału w celu odblokowania karty')\r\n        break\r\n    print('Podałeś nieprawidłowy PIN. Spróbuj jeszcze raz!')\r\n    a = input('Podaj nr PIN: ')\r\n\r\nelse:\r\n    print('PIN jest poprawny.')\r\n    time.sleep(1.0)\r\n\r\n\r\n    def print_operations():\r\n        operations = {1: 'sprawdzanie salda rachunku', 2: 'wypłata gotówki', 3: 'wpłata gótówki',\r\n                      4: 'zmiana numeru PIN',\r\n                      5: 'złożenie wniosku kredytowego', 6: 'doładowanie telefonu', 0: 'kończymy na dziś'}\r\n        print('Dostępne operacje:')\r\n        for key, value in operations.items():\r\n            print('{}: {}'.format(key, value))\r\n\r\n\r\n    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}\r\n\r\n\r\n    def checking_and_changing_the_balance(user_choice, operation_num, amount):\r\n        if user_choice == 2:\r\n            if amount < cash_withdrawals[operation_num]:\r\n                print(\r\n                    f'Nie masz wystarczających środków, żeby zrealizować tę operację.\\nMasz na koncie {amount} złotych, a próbujesz wybrać {cash_withdrawals[operation_num]} złotych.')\r\n            else:\r\n                amount -= cash_withdrawals[operation_num]\r\n        elif user_choice == 3:\r\n            amount += cash_withdrawals[operation_num]\r\n        return round(amount, 2)\r\n\r\n\r\n    print_operations()\r\n\r\n    choice1 = int(input(\r\n        'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))  # obsłużyć przypadek z wprowadzeniem wartości poza przedziałem 0-6 (ma się wyświetlać komunikat, że wybrano nieprawidłowa wartość) oraz 0 (ma się wyświetlać komunikat kończymy na dziś)\r\n    while choice1 != 0:\r\n        if choice1 == 1:\r\n            print(f'Stan dostępnych środków na twoim koncie wynosi\\n{balance} złotych.')\r\n            time.sleep(1.0)\r\n            print_operations()\r\n            choice1 = int(input(\r\n                'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n        elif choice1 == 2:\r\n\r\n            # Poniżej chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję\r\n            # słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda\r\n            if balance < min(val for val in cash_withdrawals.values()):\r\n                print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')\r\n            else:\r\n                print('Dostępne możliwości wypłaty gotówki:')\r\n                for key, value in cash_withdrawals.items():\r\n                    print('{} - {} złotych.'.format(key, value))\r\n                choice2 = int(input('Którą kwotę wybierasz: 1, 2, 3, czy 4?: '))\r\n\r\n            balance = (checking_and_changing_the_balance(choice1, choice2, balance))\r\n\r\n            print_operations()\r\n            choice1 = int(input(\r\n                'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n        elif choice1 == 3:\r\n            print('Dostępne możliwości wpłaty gotówki:')\r\n            for key, value in cash_withdrawals.items():\r\n                print('{} - {} złotych.'.format(key, value))\r\n\r\n            choice3 = int(input(\"Która kwotę wybierasz: 1, 2, 3, czy 4?: \"))\r\n            balance = (checking_and_changing_the_balance(choice1, choice3, balance))\r\n\r\n\r\n#         elif choice1 == 4:\r\n    #             a = input(\"Podaj nowy nr PIN: \")\r\n    #         elif choice1 == 5:\r\n    #             print(\r\n    #                 \"Minimalna kwota pożyczki udzielonej w bankomacie wynosi 200 zł, a maksymalna 2000 zł.  Jeśli chcesz pożyczyć więcej, udaj się do oddziału lub skorzystaj z bankowości elektronicznej. \")\r\n    #             c = float(input(\"Podaj liczbę z przedziału od 200 zł do 2000 zł: \"))\r\n    #             if 200 <= c <= 2000:\r\n    #                 b += round(c, 2)\r\n    #                 print(\"Dopisano do twojego konta\", c, \"złotych. Obecnie masz na koncie\", b + c,\r\n    #                       \"złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do odziału lub skorzystaj z bankowości elektronicznej.\")  # obsłużyć prawidłowe wyświetlanie tego komunikatu\r\n    #             else:\r\n    #                 print(\r\n    #                     \"Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł. \")\r\n    #         elif choice1 == 6:\r\n    #             d = input(\"Podaj numer telefonu, który chcesz doładować: \")\r\n    #             print(\"Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje:\")\r\n    #             print(\"1 - 10 złotych\")\r\n    #             print(\"2 - 20 złotych\")\r\n    #             print(\"3 - 50 złotych\")\r\n    #             print(\"4 - 100 złotych\")\r\n    #             choice4 = int(input(\"Która kwotę wybierasz: 1, 2, 3 czy 4? \"))\r\n    #             if choice4 == 1:\r\n    #                 b -= 10\r\n    #             elif choice4 == 2:\r\n    #                 b -= 20\r\n    #             elif choice4 == 3:\r\n    #                 b -= 50\r\n    #             elif choice4 == 4:\r\n    #                 b -= 100\r\n    else:\r\n        print('Życzymy miłego dnia i zapraszamy ponownie.')\r\n\r\n# # while choice1 in (0, 1, 2, 3, 4, 5, 6):\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	
++++ b/main.py	
+@@ -17,6 +17,8 @@
+     print('PIN jest poprawny.')
+     time.sleep(1.0)
+ 
++    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}
++
+ 
+     def print_operations():
+         operations = {1: 'sprawdzanie salda rachunku', 2: 'wypłata gotówki', 3: 'wpłata gótówki',
+@@ -27,7 +29,14 @@
+             print('{}: {}'.format(key, value))
+ 
+ 
+-    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}
++    def print_values(some_pairs, user_choice):
++        values = some_pairs
++        if user_choice == 2:
++            print('Dostępne możliwości wypłaty gotówki:')
++        elif user_choice == 3:
++            print('Dostępne możliwości wypłaty gotówki:')
++        for key, value in values.items():
++            print('{} - {} złotych.'.format(key, value))
+ 
+ 
+     def checking_and_changing_the_balance(user_choice, operation_num, amount):
+@@ -60,9 +69,7 @@
+             if balance < min(val for val in cash_withdrawals.values()):
+                 print('Nie masz wystarczajacej ilości gotówki, żeby zrealizować tę operację.')
+             else:
+-                print('Dostępne możliwości wypłaty gotówki:')
+-                for key, value in cash_withdrawals.items():
+-                    print('{} - {} złotych.'.format(key, value))
++                print_values(cash_withdrawals, choice1)
+                 choice2 = int(input('Którą kwotę wybierasz: 1, 2, 3, czy 4?: '))
+ 
+             balance = (checking_and_changing_the_balance(choice1, choice2, balance))
+@@ -72,15 +79,15 @@
+                 'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
+ 
+         elif choice1 == 3:
+-            print('Dostępne możliwości wpłaty gotówki:')
+-            for key, value in cash_withdrawals.items():
+-                print('{} - {} złotych.'.format(key, value))
+-
++            print_values(cash_withdrawals, choice1)
+             choice3 = int(input("Która kwotę wybierasz: 1, 2, 3, czy 4?: "))
+             balance = (checking_and_changing_the_balance(choice1, choice3, balance))
++            print_operations()
++            choice1 = int(input(
++                'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
+ 
+ 
+-#         elif choice1 == 4:
++    #         elif choice1 == 4:
+     #             a = input("Podaj nowy nr PIN: ")
+     #         elif choice1 == 5:
+     #             print(

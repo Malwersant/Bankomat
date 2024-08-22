@@ -1,0 +1,62 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\r\n\r\nprint('Dzień dobry. Włóż kartę do bankomatu.')\r\npin1 = input('Podaj nr PIN: ')\r\nbalance = 2000.11\r\ni = 0\r\nwhile pin1 != '6666' and i < 3:\r\n    i += 1\r\n    if i == 3:\r\n        print(\r\n            f'Wprowadzono {i} razy błędnie nr PIN. Karta została zablokowana.\\nUdaj się do oddziału w celu odblokowania karty')\r\n        break\r\n    print('Podałeś nieprawidłowy PIN. Spróbuj jeszcze raz!')\r\n    pin1 = input('Podaj nr PIN: ')\r\n\r\nelse:\r\n    print('PIN jest poprawny.')\r\n    time.sleep(1.0)\r\n\r\n    cash_withdrawals = {1: 50, 2: 100, 3: 200, 4: 500}\r\n    values = [10, 20, 50, 100]\r\n    phone_top_up = dict(enumerate(values, 1))\r\n\r\n\r\n    def print_operations():\r\n        operations = {1: 'sprawdzanie salda rachunku', 2: 'wypłata gotówki', 3: 'wpłata gótówki',\r\n                      4: 'zmiana numeru PIN',\r\n                      5: 'złożenie wniosku kredytowego', 6: 'doładowanie telefonu', 0: 'kończymy na dziś'}\r\n        print('Dostępne operacje:')\r\n        for key, value in operations.items():\r\n            print('{}: {}'.format(key, value))\r\n\r\n\r\n    def print_values(pairs):\r\n        for key, value in pairs.items():\r\n            print(f'{key} - {value} złotych.')\r\n\r\n\r\n    def checking_and_changing_the_balance(user_choice, operation_num, amount, **kwargs):\r\n        if user_choice == 2:\r\n            if amount < cash_withdrawals[operation_num]:\r\n                print(\r\n                    f'Nie masz wystarczających środków, żeby zrealizować tę operację.\\nMasz na koncie {amount} złotych, a próbujesz wybrać {cash_withdrawals[operation_num]} złotych.')\r\n\r\n            else:\r\n                amount -= cash_withdrawals[operation_num]\r\n        elif user_choice == 3:\r\n            amount += cash_withdrawals[operation_num]\r\n        elif user_choice == 6:\r\n            if amount < phone_top_up[operation_num]:\r\n                print(\r\n                    f'Nie masz wystarczających środków, żeby zrealizować tę operację.\\nMasz na koncie {amount} złotych, a próbujesz doładować telefon za {phone_top_up[operation_num]} złotych.')\r\n            else:\r\n                if 'phone_number' in kwargs:\r\n                    phone_number = kwargs['phone_number']\r\n                if len(phone_number) != 9:\r\n                    raise ValueError(\r\n                        f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)} cyfrę.')\r\n                if not (phone_number.isdigit()):\r\n                    raise ValueError(f'Numer telefonu musi się składać z samych cyfr, a przekazano także inny znak.')\r\n\r\n                # pojawia się komunikat, że mam 80 zł na koncie, a próbuję doładować telefon za więcej, ale po chwili prosi mnie o podanie numeru telefonu do poprawienia\r\n                amount -= phone_top_up[operation_num]\r\n                print(f'Twój telefon został doładowany na kwotę {phone_top_up[operation_num]} złotych.')\r\n\r\n        return round(amount, 2)\r\n\r\n\r\n    def print_telephone_values(dictonary):\r\n        for x, y in dictonary.items():\r\n            print(f'{x}: {y}')\r\n\r\n\r\n    print_operations()\r\n\r\n    choice1 = int(input(\r\n        'Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))  # obsłużyć przypadek z wprowadzeniem wartości poza przedziałem 0-6 (ma się wyświetlać komunikat, że wybrano nieprawidłowa wartość) oraz 0 (ma się wyświetlać komunikat kończymy na dziś)\r\n\r\n    while choice1 != 0:\r\n        if choice1 == 1:\r\n            print(f'Stan dostępnych środków na twoim koncie wynosi\\n{balance} złotych.')\r\n            time.sleep(1.0)\r\n            print_operations()\r\n            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n        elif choice1 == 2:\r\n            if balance < min(\r\n                    cash_withdrawals.values()):  # Tu chodzi o to, że jeśli np. kiedyś będzie można pobierać z bankomatu 10 zł, to wtedy tylko zaktualizuję słownik cash_withdrawals, a program wybierze najniższą kwotę do wypłaty, z która ma porównac stan salda\r\n                print('Nie masz wystarczajacej ilości środków na koncie, żeby zrealizować tę operację.')\r\n                time.sleep(2.0)\r\n                print_operations()\r\n                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n            else:\r\n                print('Dostępne możliwości wypłaty gotówki:')\r\n                print_values(cash_withdrawals)\r\n                choice2 = int(input('Którą kwotę wybierasz: 1, 2, 3, czy 4?: '))\r\n                balance = (checking_and_changing_the_balance(choice1, choice2, balance))\r\n                time.sleep(2.0)\r\n                print_operations()\r\n                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n        elif choice1 == 3:\r\n            print('Dostępne możliwości wpłaty gotówki:')\r\n            print_values(cash_withdrawals)\r\n            choice3 = int(input(\"Która kwotę wybierasz: 1, 2, 3, czy 4?: \"))\r\n            balance = (checking_and_changing_the_balance(choice1, choice3, balance))\r\n            time.sleep(2.0)\r\n            print_operations()\r\n            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n        elif choice1 == 4:\r\n            pin2 = input('Podaj nowy nr PIN: ')\r\n            if pin2 != pin1:\r\n                pin1 = pin2\r\n                print('Twój PIN został zmieniony.')\r\n            else:\r\n                print('Twój nowy PIN jest taki sam jak stary i dlatego nie został zmieniony. Spróbuj ponownie.')\r\n\r\n            print_operations()\r\n            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n\r\n        elif choice1 == 5:\r\n            print(\r\n                f'Minimalna kwota pożyczki udzielonej w bankomacie wynosi 200 zł, a maksymalna 2000 zł.\\nJeśli chcesz pożyczyć więcej, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')\r\n            choice4 = int(input('Podaj liczbę z przedziału od 200 zł do 2000 zł: '))\r\n            if 200 <= choice4 <= 2000:\r\n                balance += round(choice4, 2)\r\n                print(\r\n                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {balance} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu\r\n            else:\r\n                print(\r\n                    f'Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł.')\r\n            print_operations()\r\n            choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))\r\n\r\n        elif choice1 == 6:\r\n            if balance < min(phone_top_up.values()):\r\n                print('Nie masz wystarczajacej ilości środków na koncie, żeby zrealizować tę operację.')\r\n                print_operations()\r\n                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))\r\n            else:\r\n                print('Podaj na jaka kwotę chcesz doładować telefon. Dostępne opcje: ')\r\n                print_telephone_values(phone_top_up)\r\n                choice5 = int(input('Którą kwotę wybierasz: 1, 2, 3 czy 4? '))\r\n                choice6 = input(f'Podaj numer telefonu, który chcesz doładować: ')  # tu tez  zrobić rise error\r\n                try:\r\n                    balance = checking_and_changing_the_balance(choice1, choice5, balance, phone_number=choice6)\r\n                except ValueError as e:\r\n                    print(e)\r\n                time.sleep(2.0)\r\n                print_operations()\r\n                choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))\r\n\r\n    else:\r\n        print('Życzymy miłego dnia i zapraszamy ponownie.')\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	
++++ b/main.py	
+@@ -51,8 +51,8 @@
+                 print(
+                     f'Nie masz wystarczających środków, żeby zrealizować tę operację.\nMasz na koncie {amount} złotych, a próbujesz doładować telefon za {phone_top_up[operation_num]} złotych.')
+             else:
+-                if 'phone_number' in kwargs:
+-                    phone_number = kwargs['phone_number']
++                # if 'phone_number' in kwargs:
++                phone_number = kwargs['phone_number']
+                 if len(phone_number) != 9:
+                     raise ValueError(
+                         f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)} cyfrę.')
+@@ -138,6 +138,7 @@
+         elif choice1 == 6:
+             if balance < min(phone_top_up.values()):
+                 print('Nie masz wystarczajacej ilości środków na koncie, żeby zrealizować tę operację.')
++                time.sleep(2.0)
+                 print_operations()
+                 choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0? '))
+             else:
+Index: .idea/Bankomat.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+===================================================================
+diff --git a/.idea/Bankomat.iml b/.idea/Bankomat.iml
+--- a/.idea/Bankomat.iml	
++++ b/.idea/Bankomat.iml	
+@@ -6,5 +6,6 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="module" module-name="PyCharmLearningProject" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/Bankomat.iml\" filepath=\"$PROJECT_DIR$/.idea/Bankomat.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	
++++ b/.idea/modules.xml	
+@@ -3,6 +3,7 @@
+   <component name="ProjectModuleManager">
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/.idea/Bankomat.iml" filepath="$PROJECT_DIR$/.idea/Bankomat.iml" />
++      <module fileurl="file://$USER_HOME$/AppData/Local/JetBrains/PyCharmCE2022.3/demo/PyCharmLearningProject/.idea/PyCharmLearningProject.iml" filepath="$USER_HOME$/AppData/Local/JetBrains/PyCharmCE2022.3/demo/PyCharmLearningProject/.idea/PyCharmLearningProject.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file

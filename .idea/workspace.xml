@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4aa9d1f1-4929-41d9-9135-5027eb62f988" name="Changes" comment="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Faktoryzacja_kodu" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Jedna_z_pierwszych_wersji" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2kZb0xOYwe4V0j23zftnrcEZ6BX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/szochniak/AppData/Roaming/JetBrains/PyCharmCE2022.3/scratches/testy.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Python.testy">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Bankomat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mobilo" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Bankomat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/mobilo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Bankomat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/testy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4aa9d1f1-4929-41d9-9135-5027eb62f988" name="Changes" comment="" />
+      <created>1723493826976</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1723493826976</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Główna gałąź projektu.">
+      <created>1723494074844</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723494074844</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Główna gałąź projektu.">
+      <created>1723495702121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723495702121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mały teścik.">
+      <created>1723660831963</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723660831963</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Mały teścik2.">
+      <created>1723662438216</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723662438216</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mały teścik2.">
+      <created>1723663825477</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723663825477</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Dodanie nowej funkcji &quot;print values&quot;, która odpowiada za drukowanie jak kwoty można wypłacać lub wypłacać z bankomatu.">
+      <created>1723667648103</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723667648103</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Dodanie funkcjonalności zminy PIN i sprawdzenie, czy stary PIN nie jest taki sam jak nowy. W przyszłości trzeba będzie obsłużyć try i exceptem wprowadzenie nieprawidłowych numerów PIN.">
+      <created>1723669424009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723669424009</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Dodanie funkcjonalności zminy PIN i sprawdzenie, czy stary PIN nie jest taki sam jak nowy. W przyszłości trzeba będzie obsłużyć try i exceptem wprowadzenie nieprawidłowych numerów PIN.">
+      <created>1723749915134</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723749915134</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Dodanie funkcjonalności wnioskowania o kredyt gotówkowy. W przyszłości rozbudowa o try/except w przypadku wprowadzenia kwoty poza zakresem.">
+      <created>1723915770304</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723915770304</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Dodanie funkcjonalności doładowania telefonu. Poprawy jeszcze wymagają komunikaty o braku/niewystarczającej ilości środków na koncie przy próbie wypłaty gotówki/doładowania telefonu.">
+      <created>1724006596586</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1724006596586</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Dodanie nowego brancha dla sprawdzenia poprawności wprowadzenia numeru telefonu.">
+      <created>1724271851660</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724271851660</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa.">
+      <created>1724275362171</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724275362171</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Główna gałąź projektu." />
+    <MESSAGE value="Mały teścik." />
+    <MESSAGE value="Mały teścik2." />
+    <MESSAGE value="Dodanie nowej funkcji &quot;print values&quot;, która odpowiada za drukowanie jak kwoty można wypłacać lub wypłacać z bankomatu." />
+    <MESSAGE value="Dodanie funkcjonalności zminy PIN i sprawdzenie, czy stary PIN nie jest taki sam jak nowy. W przyszłości trzeba będzie obsłużyć try i exceptem wprowadzenie nieprawidłowych numerów PIN." />
+    <MESSAGE value="Dodanie funkcjonalności wnioskowania o kredyt gotówkowy. W przyszłości rozbudowa o try/except w przypadku wprowadzenia kwoty poza zakresem." />
+    <MESSAGE value="Dodanie funkcjonalności doładowania telefonu. Poprawy jeszcze wymagają komunikaty o braku/niewystarczającej ilości środków na koncie przy próbie wypłaty gotówki/doładowania telefonu." />
+    <MESSAGE value="Dodanie nowego brancha dla sprawdzenia poprawności wprowadzenia numeru telefonu." />
+    <MESSAGE value="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa." />
+    <option name="LAST_COMMIT_MESSAGE" value="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa." />
+  </component>
+</project>
