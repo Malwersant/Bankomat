@@ -1,4 +1,5 @@
 import time
+import re
 
 print('Dzień dobry. Włóż kartę do bankomatu.')
 pin1 = input('Podaj nr PIN: ')
@@ -56,9 +57,11 @@ else:
                         'phone_number']  # ale generalnie zaporponował ja chatgpt, żeby sprawdzić na początku klucz phone_number jest w kwargs.
                 if len(phone_number) != 9:
                     raise ValueError(
-                        f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)} cyfrę.')
+                        f'Numer telefonu musi się składać z 9-ciu cyfr. Podano {len(phone_number)}. Spróbuj ponownie.')
                 if not (phone_number.isdigit()):
-                    raise ValueError(f'Numer telefonu musi się składać z samych cyfr, a przekazano także inny znak.')
+                    raise ValueError(
+                        'Numer telefonu musi się składać z samych cyfr, a podano także znaki: {}. Spróbuj ponownie.'.format(
+                            ', '.join(re.findall("\D", phone_number))))
 
                 amount -= phone_top_up[operation_num]
                 print(f'Twój telefon został doładowany na kwotę {phone_top_up[operation_num]} złotych.')
@@ -78,7 +81,7 @@ else:
 
     while choice1 != 0:
         if choice1 == 1:
-            print(f'Stan dostępnych środków na twoim koncie wynosi\n{balance} złotych.')
+            print(f'Stan dostępnych środków na twoim koncie wynosi\n{round(balance,2)} złotych.')
             time.sleep(1.0)
             print_operations()
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
@@ -113,7 +116,9 @@ else:
             pin2 = input('Podaj nowy nr PIN: ')
             try:
                 if not pin2.isdigit():
-                    raise ValueError(f'Numer PIN musi się składać z samych cyfr. Podano inny znak. Spróbuj ponownie.')
+                    raise ValueError(
+                        'Numer PIN musi się składać z samych cyfr, a podano także znaki: {}. Spróbuj ponownie.'.format(
+                            ', '.join(re.findall("\D", pin2))))
                 if len(pin2) != 4:
                     raise ValueError(f'Numer PIN musi się składać z 4 znaków. Podano {len(pin2)}. Spróbuj ponownie.')
                 if pin2 == pin1:
@@ -138,7 +143,7 @@ else:
             if 200 <= choice4 <= 2000:
                 balance += round(choice4, 2)
                 print(
-                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {balance} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu
+                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {round(balance,2)} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu
             else:
                 print(
                     f'Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł.')

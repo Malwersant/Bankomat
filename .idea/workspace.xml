@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4aa9d1f1-4929-41d9-9135-5027eb62f988" name="Changes" comment="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-08-14_10_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-08-14_10_48__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-08-22_09_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-08-22_09_13__Changes_.xml" afterDir="false" />
+    <list default="true" id="4aa9d1f1-4929-41d9-9135-5027eb62f988" name="Changes" comment="Dodano obsługę błędów związanych z podaniem nieprawidłowego PIN, czyli nieskładającego się z samych cyfr, o długości innej niż 4 znaki oraz takiego samego, jak poprzedni PIN.">
+      <change beforePath="$PROJECT_DIR$/.idea/Bankomat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bankomat.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -38,7 +37,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/szochniak/AppData/Roaming/JetBrains/PyCharmCE2022.3/scratches/testy.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/szochniak/AppData/Roaming/JetBrains/PyCharmCE2022.3/scratches/mobilo.py&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
@@ -200,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1724275362171</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Dodano obsługę błędów związanych z podaniem nieprawidłowego PIN, czyli nieskładającego się z samych cyfr, o długości innej niż 4 znaki oraz takiego samego, jak poprzedni PIN.">
+      <created>1724359694953</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724359694953</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,6 +242,7 @@
     <MESSAGE value="Dodanie funkcjonalności doładowania telefonu. Poprawy jeszcze wymagają komunikaty o braku/niewystarczającej ilości środków na koncie przy próbie wypłaty gotówki/doładowania telefonu." />
     <MESSAGE value="Dodanie nowego brancha dla sprawdzenia poprawności wprowadzenia numeru telefonu." />
     <MESSAGE value="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa." />
-    <option name="LAST_COMMIT_MESSAGE" value="Obsługa błędów związanych z podaniem niewłaściwego numeru telefonu działa." />
+    <MESSAGE value="Dodano obsługę błędów związanych z podaniem nieprawidłowego PIN, czyli nieskładającego się z samych cyfr, o długości innej niż 4 znaki oraz takiego samego, jak poprzedni PIN." />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodano obsługę błędów związanych z podaniem nieprawidłowego PIN, czyli nieskładającego się z samych cyfr, o długości innej niż 4 znaki oraz takiego samego, jak poprzedni PIN." />
   </component>
 </project>
