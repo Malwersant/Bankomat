@@ -81,7 +81,7 @@ else:
 
     while choice1 != 0:
         if choice1 == 1:
-            print(f'Stan dostępnych środków na twoim koncie wynosi\n{round(balance,2)} złotych.')
+            print(f'Stan dostępnych środków na twoim koncie wynosi\n{round(balance, 2)} złotych.')
             time.sleep(1.0)
             print_operations()
             choice1 = int(input('Którą operację wybierasz: 1,2,3,4,5,6 czy 0?: '))
@@ -120,7 +120,8 @@ else:
                         'Numer PIN musi się składać z samych cyfr, a podano także znaki: {}. Spróbuj ponownie.'.format(
                             ', '.join(re.findall("\D", pin2))))
                 if len(pin2) != 4:
-                    raise ValueError(f'Numer PIN musi się składać z 4 znaków. Podano {len(pin2)}. Spróbuj ponownie.')
+                    raise ValueError(
+                        f'Numer PIN musi się składać z 4 znaków. Podano {len(pin2)}. Spróbuj ponownie.')
                 if pin2 == pin1:
                     raise ValueError(
                         'Podany przez ciebie PIN jest taki sam jak poprzedni i dlatego nie zostanie zmieniony. Spróbuj ponownie.')
@@ -143,7 +144,7 @@ else:
             if 200 <= choice4 <= 2000:
                 balance += round(choice4, 2)
                 print(
-                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {round(balance,2)} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu
+                    f'Dopisano do twojego konta {choice4} złotych. Obecnie masz na koncie {round(balance, 2)} złotych. W celu poznania wysokości oprocentowania kredytu, terminu spłaty oraz ilości rat, udaj się do oddziału lub skorzystaj z bankowości elektronicznej.')  # obsłużyć prawidłowe wyświetlanie tego komunikatu
             else:
                 print(
                     f'Wybrałeś nieprawidłowa kwotę. Minimalna kwota pożyczki udzielonej w bankomacie wynosci 200 zł, a maksymalna 2000 zł.')
